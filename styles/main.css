@@ -1,0 +1,253 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+
+body {
+  background: rgb(245, 245, 245);
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+@keyframes showHistory {
+  0% {
+    max-height: 0;
+    overflow: hidden;
+  }
+  100% {
+    max-height: 300px;
+    overflow: hidden;
+  }
+}
+
+@keyframes showRowMenuInfo {
+  0% {
+    max-height: 0;
+    padding: 0 5px;
+  }
+  100% {
+    max-height: 15px;
+    padding: 5px;
+  }
+}
+
+#table-builder-interface {
+  list-style: none;
+  display: grid;
+  width: fit-content;
+  width: -moz-fit-content;
+  margin: 10px auto;
+  padding: 15px 20px 20px;
+  background-color: #212121;
+  color: #fff;
+  gap: 15px;
+}
+#table-builder-interface li > * + * {
+  margin-top: 5px;
+}
+#table-builder-interface label {
+  display: block;
+  text-align: center;
+}
+#table-builder-interface input,
+#table-builder-interface select {
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  outline: none;
+  padding: 0 5px;
+  height: 25px;
+  border: 0;
+  font-family: "Roboto Slab", serif;
+}
+#table-builder-interface input[type="color"] {
+  padding: 0;
+}
+#table-builder-interface button {
+  display: block;
+  width: 100%;
+  height: 40px;
+  outline: 0;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  line-height: 40px;
+  position: relative;
+  font-family: "Roboto Slab", serif;
+}
+#table-builder-interface .size-quarter-element {
+  width: 24%;
+  display: inline-block;
+}
+#table-builder-interface .size-quarter-element:nth-of-type(3) {
+  margin-left: 4%;
+}
+
+#table-builder-interface .size-half-element {
+  width: 49%;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+#table-builder-interface #padding-right,
+#table-builder-interface #padding-bottom {
+  margin-left: 2%;
+}
+
+#table-builder-interface button:hover {
+  background-color: #cecece;
+}
+#table-builder-interface button:active {
+  background-color: #b1b1b1;
+}
+
+.ui-section {
+  text-align: center;
+  padding-top: 5px;
+  margin: 0;
+}
+
+.history {
+  background: #313131;
+  color: #fff;
+  padding: 5px 10px;
+  position: absolute;
+  max-height: 300px;
+  width: 400px;
+  left: 0;
+  top: 100%;
+  line-height: normal;
+  animation-name: showHistory;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
+  overflow: auto;
+  list-style: none;
+  z-index: 1;
+}
+
+.history li {
+  cursor: pointer;
+  text-align: left;
+  padding: 5px 0;
+}
+
+.history li:hover {
+  color: rgb(200, 200, 200);
+}
+
+.history li.hover {
+  color: rgb(200, 200, 200);
+}
+
+.outstanding-table li {
+  cursor: text;
+  position: relative;
+}
+
+.outstanding-table li textarea {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  border: 0;
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.ot-menu {
+  top: 50%;
+  right: 100%;
+  position: absolute;
+  transform: translateY(-50%);
+  background-color: transparent;
+  font-size: 16px;
+  padding: 0 5px;
+  width: 125px;
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ot-menu:hover button {
+  color: #fff;
+  background-color: #212121;
+}
+
+.ot-menu button {
+  line-height: 1em;
+  border: 0;
+  margin: 0;
+  outline: 0;
+  padding: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  width: 25px;
+  font-size: 1em;
+  display: block;
+  position: relative;
+  color: #000;
+  background-color: transparent;
+}
+
+.ot-bottom {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+
+.ot-menu button::after {
+  display: none;
+  font-size: 11px;
+  background-color: #313131;
+  color: #fff;
+  position: absolute;
+  bottom: 100%;
+  overflow: hidden;
+  max-height: 0;
+  animation-name: showRowMenuInfo;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  animation-delay: 0.3s;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.ot-menu .ot-bottom::after {
+  content: "move to bottom";
+  bottom: auto;
+  top: 100%;
+  left: auto;
+  right: -300%;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+
+.ot-top::after {
+  content: "move to top";
+  left: -200%;
+}
+
+.ot-up::after {
+  content: "move up";
+  left: 0;
+}
+
+.ot-down::after {
+  content: "move down";
+  left: -100%;
+}
+
+.ot-delete::after {
+  content: "remove row";
+  left: -400%;
+}
+
+.ot-menu button:hover::after {
+  display: block;
+}
